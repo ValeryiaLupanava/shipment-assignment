@@ -56,9 +56,9 @@ create or replace table shipments.shipments_analysis
  status_end_date timestamp,
  min_temperature float,
  max_temperature float,
- constraint fk_shipments_analysis_customer_id foreign key (customer_id) REFERENCES shipments.customers(customer_id),
- constraint fk_shipments_analysis_logger_id foreign key (logger_id) REFERENCES shipments.loggers(logger_id)
+ constraint fk_shipments_analysis_customer_id foreign key (customer_id) REFERENCES shipments.customers(customer_id)
 ) using delta;
+ALTER TABLE shipments.shipments_analysis CLUSTER BY (report_date)
 
 --===================================================================
 --===================================================================
