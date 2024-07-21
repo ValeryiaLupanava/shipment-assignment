@@ -95,9 +95,4 @@ logging.info(f"Merging data into the table {table_schema}.{table_name} is starte
 result_df = spark.sql(merge_query)
 logging.info(f"Merging data into the table {table_schema}.{table_name} is finished")
 logging.info(f"Statisticts: updated rows-{result_df.first()['num_updated_rows']}, inserted rows-{result_df.first()['num_inserted_rows']}")
-
-# COMMAND ----------
-
-# Stopping spark session
 logger.info(f"The process {process_name} is finished")
-spark.stop()
