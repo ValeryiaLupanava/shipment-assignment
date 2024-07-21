@@ -48,11 +48,14 @@ ALTER TABLE shipments.logger_temperature SET TBLPROPERTIES ('delta.deletedFileRe
 -- Table for shipment_analysis (dashboard)
 --===================================================================
 create or replace table shipments.shipments_analysis
-(customer_id int NOT NULL,
- logger_id int NOT NULL,
- min_temperature float NOT NULL,
- max_temperature float NOT NULL,
- report_date timestamp,
+(report_date date NOT NULL,
+ customer_id int NOT NULL,
+ customer_name string NOT NULL,
+ status string,
+ status_start_date timestamp NOT NULL,
+ status_end_date timestamp,
+ min_temperature float,
+ max_temperature float,
  constraint fk_shipments_analysis_customer_id foreign key (customer_id) REFERENCES shipments.customers(customer_id),
  constraint fk_shipments_analysis_logger_id foreign key (logger_id) REFERENCES shipments.loggers(logger_id)
 ) using delta;
